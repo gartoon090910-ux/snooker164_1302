@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 public enum BallColor
@@ -15,10 +16,11 @@ public enum BallColor
 public class Ball : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
-    private int point;
+    public int point;
 
     [SerializeField]
     private BallColor color;
+
 
     public void OnPointerClick(PointerEventData eventData)
     {
