@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Hole : MonoBehaviour
@@ -8,7 +9,12 @@ public class Hole : MonoBehaviour
 
         if (b != null)
         {
-            GameManager.instance.PlayerScore += b.point;
+           // if (b.point == 0)
+            //{
+                //GameManager.instance.ShowNotiText("White ball drops!!! \nYOu Lose!");
+                //Time.timeScale = 0f;
+            //}
+            GameManager.instance.ShowNotiText(b.point);
             Destroy(b.gameObject);
         }
     }

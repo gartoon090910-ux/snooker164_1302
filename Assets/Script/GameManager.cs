@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject cam;
 
+    private TMP_Text notiText;
+
     public static GameManager instance;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
+        SetBall(BallColor.Red, 1);
         
     }
     void Update()
@@ -56,11 +59,11 @@ public class GameManager : MonoBehaviour
 
     private void SetBall(BallColor col, int i)
     {
-        GameObject obj = Instantiate(ballPrefab,
-                                 ballPositions[i].transform.position,
-                                     Quaternion.identity);
+         Instantiate(ballPrefab,
+                     ballPositions[i].transform.position,
+                     Quaternion.identity);
         
-        Ball b = obj.GetComponent<Ball>();
+        //Ball b = obj.GetComponent<Ball>();
         //b.SetCoLorAndPoint(col);
     }
 
@@ -97,5 +100,12 @@ public class GameManager : MonoBehaviour
         cam.transform.position = cueball.transform.position + new Vector3(0f, 7f, -15f);
         cam.transform.eulerAngles = new Vector3(30f, 0f, 0f);
     }
+
+    public void ShowNotiText(int n)
+    {
+        playerScore += n;
+        notiText.text = $"This ball: {n}\nTotal Score is {playerScore}";
+    }
+
 
 }
