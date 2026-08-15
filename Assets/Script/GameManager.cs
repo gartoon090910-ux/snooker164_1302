@@ -43,14 +43,14 @@ public class GameManager : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
             ShootBall();
 
-        if (Keyboard.current.aKey.IsPressed || Keyboard.current.leftArrowKey.isPressed)
+       // if (Keyboard.current.aKey.IsPressed || Keyboard.current.leftArrowKey.isPressed)
             xInput = -0.1f;
-        else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
+        //else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
             xInput = 0.1f;
-        else
+       // else
             xInput = 0f;
 
-        if(Keyboard.current.backspaceKey.wasPressedThisFrame)
+       // if(Keyboard.current.backspaceKey.wasPressedThisFrame)
             StopBall();
     }
 
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
                                      Quaternion.identity);
         
         Ball b = obj.GetComponent<Ball>();
-        b.SetCoLorAndPoint(col);
+        //b.SetCoLorAndPoint(col);
     }
 
     private void ShootBall()

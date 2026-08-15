@@ -292,6 +292,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerScore: 0
+  ballPositions:
+  - {fileID: 841242768}
+  - {fileID: 313326413}
+  - {fileID: 557285236}
+  - {fileID: 466049495}
+  - {fileID: 131903517}
+  - {fileID: 1303789467}
+  - {fileID: 607379236}
+  - {fileID: 781820075}
+  ballPrefab: {fileID: 1646660753}
+  ballline: {fileID: 1813240706}
+  cueball: {fileID: 1646660753}
+  xInput: 0
+  cam: {fileID: 330585543}
 --- !u!4 &240519154
 Transform:
   m_ObjectHideFlags: 0
@@ -1812,6 +1826,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7686176463496652301, guid: 189240d3135c56c4cb6ec9121792f10c, type: 3}
   m_PrefabInstance: {fileID: 1523452452}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1646660753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4652999707427824212, guid: 8f933448f61c91943bf4e36ee8dd63d0, type: 3}
+  m_PrefabInstance: {fileID: 1041659759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1647345896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2099,7 +2118,7 @@ Transform:
   m_GameObject: {fileID: 1813240706}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.82}
+  m_LocalPosition: {x: 0, y: 0, z: 0.459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2164,7 +2183,7 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.1368599
         value: 1
         inSlope: 0
         outSlope: 0
@@ -2210,7 +2229,7 @@ LineRenderer:
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
-    shadowBias: 0.5
+    shadowBias: 4.94
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
