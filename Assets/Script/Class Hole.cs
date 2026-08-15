@@ -9,9 +9,9 @@ public class Hole : MonoBehaviour
 
         if (b != null)
         {
-           // if (b.point == 0)
+            //if (b.point == 0)
             //{
-                //GameManager.instance.ShowNotiText("White ball drops!!! \nYOu Lose!");
+                //GameManager.instance.("White ball drops!!! \nYOu Lose!");
                 //Time.timeScale = 0f;
             //}
             GameManager.instance.ShowNotiText(b.point);

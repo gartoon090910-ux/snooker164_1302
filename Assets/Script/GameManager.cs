@@ -39,32 +39,38 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SetBall(BallColor.Red, 1);
-        
+        SetBall(BallColor.Yellow, 2);
+        SetBall(BallColor.Green, 3);
+        SetBall(BallColor.Brown, 4);
+        SetBall(BallColor.Blue, 5);
+        SetBall(BallColor.Pink, 6);
+        SetBall(BallColor.Black, 7);
+
     }
     void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
             ShootBall();
 
-       // if (Keyboard.current.aKey.IsPressed || Keyboard.current.leftArrowKey.isPressed)
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
             xInput = -0.1f;
-        //else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
+        else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
             xInput = 0.1f;
-       // else
+        else
             xInput = 0f;
 
-       // if(Keyboard.current.backspaceKey.wasPressedThisFrame)
+        if(Keyboard.current.backspaceKey.wasPressedThisFrame)
             StopBall();
     }
 
     private void SetBall(BallColor col, int i)
     {
-         Instantiate(ballPrefab,
-                     ballPositions[i].transform.position,
-                     Quaternion.identity);
+          GameObject obj = Instantiate(ballPrefab,
+                                       ballPositions[i].transform.position,
+                                       Quaternion.identity);
         
-        //Ball b = obj.GetComponent<Ball>();
-        //b.SetCoLorAndPoint(col);
+        Ball b = obj.GetComponent<Ball>();
+        b.SetColorAndPoint(col);
     }
 
     private void ShootBall()
