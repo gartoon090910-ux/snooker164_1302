@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private GameObject[] ballPositions;
 
     [SerializeField]
-    private GameObject[] ballPrefab;
+    private GameObject ballPrefab;
 
     [SerializeField]
     private GameObject ballline;
@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float xInput = 0f;
+
+    [SerializeField]
+    private GameObject cam;
 
     public static GameManager instance;
 
@@ -43,8 +46,8 @@ public class GameManager : MonoBehaviour
         if (Keyboard.current.aKey.IsPressed || Keyboard.current.leftArrowKey.isPressed)
             xInput = -0.1f;
         else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-            xInput = 0.1f
-        else 
+            xInput = 0.1f;
+        else
             xInput = 0f;
 
         if(Keyboard.current.backspaceKey.wasPressedThisFrame)
@@ -66,6 +69,10 @@ public class GameManager : MonoBehaviour
         Rigidbody rb = cueball.GetComponent<Rigidbody>();
         rb.AddRelativeForce(Vector3.forward * 50, ForceMode.Impulse);
         ballline.SetActive(false);
+
+        cam.transform.parent = null;
+        cam.transform.position = new Vector3(0f, 30f, -42f);
+        cam.transform.eulerAngles = new Vector3(45f, 0f, 0f);
     }
 
     private void RotateBall()
@@ -81,6 +88,14 @@ public class GameManager : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         cueball.transform.eulerAngles = new Vector3(0f, 0f, 0f);
         ballline.SetActive(true);
+        CameraBehindCueBall();
+    }
+
+    private void CameraBehindCueBall()
+    {
+        cam.transform.parent = cueball.transform;
+        cam.transform.position = cueball.transform.position + new Vector3(0f, 7f, -15f);
+        cam.transform.eulerAngles = new Vector3(30f, 0f, 0f);
     }
 
 }
