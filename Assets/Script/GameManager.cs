@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Start()
+    private void Start()   
     {
         SetBall(BallColor.Red, 1);
         SetBall(BallColor.Yellow, 2);
@@ -53,9 +53,9 @@ public class GameManager : MonoBehaviour
             ShootBall();
 
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-            xInput = -0.1f;
+            xInput = -0.5f;
         else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-            xInput = 0.1f;
+            xInput = 0.5f;
         else
             xInput = 0f;
 
