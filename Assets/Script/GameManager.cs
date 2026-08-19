@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     private GameObject ballline;
 
     [SerializeField]
-    private GameObject cueball;
+    private GameObject cueBall;
 
     [SerializeField]
     private float xInput = 0f;
@@ -49,13 +49,15 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        RotateBall();
+
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
             ShootBall();
 
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-            xInput = -0.5f;
+            xInput = -0.1f;
         else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-            xInput = 0.5f;
+            xInput = 0.1f;
         else
             xInput = 0f;
 
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     private void ShootBall()
     {
-        Rigidbody rb = cueball.GetComponent<Rigidbody>();
+        Rigidbody rb = cueBall.GetComponent<Rigidbody>();
         rb.AddRelativeForce(Vector3.forward * 50, ForceMode.Impulse);
         ballline.SetActive(false);
 
@@ -86,24 +88,24 @@ public class GameManager : MonoBehaviour
 
     private void RotateBall()
     {
-        if (cueball != null)
-            cueball.transform.Rotate(0f, xInput, 0f);
+        if (cueBall != null)
+            cueBall.transform.Rotate(new Vector3(0f, xInput, 0f));
     }
 
     private void StopBall()
     {
-        Rigidbody rb = cueball.GetComponent<Rigidbody>();
+        Rigidbody rb = cueBall.GetComponent<Rigidbody>();
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        cueball.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        cueBall.transform.eulerAngles = new Vector3(0f, 0f, 0f);
         ballline.SetActive(true);
         CameraBehindCueBall();
     }
 
     private void CameraBehindCueBall()
     {
-        cam.transform.parent = cueball.transform;
-        cam.transform.position = cueball.transform.position + new Vector3(0f, 7f, -15f);
+        cam.transform.parent = cueBall.transform;
+        cam.transform.position = cueBall.transform.position + new Vector3(0f, 7f, -15f);
         cam.transform.eulerAngles = new Vector3(30f, 0f, 0f);
     }
 
