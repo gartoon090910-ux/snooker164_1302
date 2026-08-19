@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject cam;
 
+    [SerializeField]
     private TMP_Text notiText;
 
     public static GameManager instance;
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Start()   
     {
+        CameraBehindCueBall();    
+
         SetBall(BallColor.Red, 1);
         SetBall(BallColor.Yellow, 2);
         SetBall(BallColor.Green, 3);
@@ -55,9 +58,9 @@ public class GameManager : MonoBehaviour
             ShootBall();
 
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-            xInput = -0.1f;
+            xInput = -0.05f;
         else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-            xInput = 0.1f;
+            xInput = 0.05f;
         else
             xInput = 0f;
 
@@ -79,11 +82,12 @@ public class GameManager : MonoBehaviour
     {
         Rigidbody rb = cueBall.GetComponent<Rigidbody>();
         rb.AddRelativeForce(Vector3.forward * 50, ForceMode.Impulse);
+        
         ballline.SetActive(false);
 
         cam.transform.parent = null;
         cam.transform.position = new Vector3(0f, 30f, -42f);
-        cam.transform.eulerAngles = new Vector3(45f, 0f, 0f);
+        cam.transform.eulerAngles = new Vector3(44f, 0f, 0f);
     }
 
     private void RotateBall()
@@ -98,7 +102,9 @@ public class GameManager : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         cueBall.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        
         ballline.SetActive(true);
+        
         CameraBehindCueBall();
     }
 
@@ -109,11 +115,14 @@ public class GameManager : MonoBehaviour
         cam.transform.eulerAngles = new Vector3(30f, 0f, 0f);
     }
 
-    public void ShowNotiText(int n)
+    public void ShowScoreText(int n)
     {
         playerScore += n;
         notiText.text = $"This ball: {n}\nTotal Score is {playerScore}";
     }
 
-
+    public void ShowString(string s)
+    {
+    notiText.text = s;
+    }
 }
