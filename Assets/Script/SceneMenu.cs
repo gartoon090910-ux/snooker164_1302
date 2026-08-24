@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneMenu : MonoBehaviour
 {
+    private void Start()
+    {
+        AudioManager.instance.PlayBGM(0);
+    }
     public void Startgame()
     {
         Settings.fromSave = false;
