@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource[] sfx;
 
     [SerializeField]
-    private AudioMixer[] mixer;
+    private AudioMixer mixer;
 
     public static AudioManager instance;
 
@@ -54,5 +54,10 @@ public class AudioManager : MonoBehaviour
     {
         if (i < sfx.Length)
             sfx[i].PlayOneShot(sfx[i].clip);
+    }
+
+    public void AdjustMasterVolume(float volume)
+    {
+        mixer.SetFloat("master", volume);
     }
 }
