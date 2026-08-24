@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneMenu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject adjustPanel;
     private void Start()
     {
         AudioManager.instance.PlayBGM(0);
@@ -22,5 +24,10 @@ public class SceneMenu : MonoBehaviour
     public void Exit()
     {
     Application.Quit();
+    }
+
+    public void ShowHideAdjustPanel(bool flag)
+    {
+        adjustPanel.SetActive(flag);
     }
 }
