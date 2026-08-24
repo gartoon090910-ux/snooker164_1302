@@ -1379,7 +1379,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 164397017}
         m_TargetAssemblyTypeName: SceneMenu, Assembly-CSharp
-        m_MethodName: Exit
+        m_MethodName: LoadSavedNewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
